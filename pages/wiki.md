@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Wiki
+title: Experience
 description: 人越学越觉得自己无知
-keywords: 维基, Wiki
+keywords: 个人, experience
 comments: false
-menu: 维基
+menu: 个人
 permalink: /wiki/
 ---
 
-> 记多少命令和快捷键会让脑袋爆炸呢？
+> 成长 是一种经历, 成熟 是一种阅历
 
 <ul class="listing">
 {% for wiki in site.wiki %}
