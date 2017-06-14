@@ -1,3 +1,10 @@
+---
+layout: post
+title: Mac 上编辑 Markdown
+categories: Blog
+description: sublime MarkdownEditing OmniMarkupPreviewer
+keywords: Markdown
+---
 #Mac 上编辑 Markdown
 ##起因
 由于之前一直在用sublime，所以就想如果能在sublime上直接写文章就好了，所以就有了这篇文章
