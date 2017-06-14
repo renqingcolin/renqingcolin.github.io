@@ -5,9 +5,9 @@ categories: Blog
 description: sublime MarkdownEditing OmniMarkupPreviewer
 keywords: Markdown
 ---
-#Mac 上编辑 Markdown
-##起因
-由于之前一直在用sublime，所以就想如果能在sublime上直接写文章就好了，所以就有了这篇文章
+
+起因:由于之前一直在用sublime，所以就想如果能在sublime上直接写文章就好了，所以就有了这篇文章
+
 ###第一步：安装  Package Control
 >1、点击sublime菜单栏中Preferences > Browse Packages… 
 ><br>2、进入Installed Packages/ 文件夹
