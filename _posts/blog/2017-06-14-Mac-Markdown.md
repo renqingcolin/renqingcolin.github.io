@@ -17,11 +17,11 @@ keywords: Markdown
 ><br>3、下载[Package Control包](https://packagecontrol.io/Package%20Control.sublime-package)，将其剪切到Installed Packages/文件夹下
 ><br>4、重启Sublime 
 
-### 安装MarkdownEditing
+### 第二步：安装MarkdownEditing
 
 Package Control 安装成功后我们就可以使用它方便的管理插件了，首先使用快捷键 'command + shift + p ' 进入到Sublime 命令面板，输入 "package install" 从列表中选择 "install Package" 然后回车。
 
-### 安装OmniMarkupPreviewer
+### 第三步：安装OmniMarkupPreviewer
 
 实现预览，键入 "command + shift + p" 进入sublime的命令界面，输入 "package ins" 然后回车 ，键入 "ominmarkup" 选择OmniMarkupPreviewe
 
