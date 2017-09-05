@@ -1,0 +1,56 @@
+---
+layout: post
+title: 204. Count Primes
+categories: LeetCode
+description: 204. Count Primes
+keywords: 204. Count Primes
+---
+# 204. Count Primes
+
+### 题意
+Count the number of prime numbers less than a non-negative number, n.
+
+### 理解
+给定非负数n，给出小于n的所有质数个数。
+附：(质数定义：质数又称素数，有无限个。一个大于1的自然数，除了1和它本身外，不能被其他自然数(质数)整除，换句话说就是该数除了1和它本身以外不再有其他的因数；否则称为合数。)
+
+### 做法
+首先介绍几个判断一个数是不是质数的方法：
+
+1. 最直接的做法，见代码：
+```
+public static boolean  is_Preme_1(int n)
+{
+    for(int i = 2;i< n;i++)
+    {
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+```
+
+2. 将循环判断次数减少一半（大约）
+
+对于一个正整数n而言，它对(n/2, n)范围内的正整数是必然不能够整除的，因此，我们在判断n的时候，没有必要让它除以该范围内的数。代码如下：
+
+```
+public static boolean  is_Preme_2(int n){
+    int u = n/2+1;
+    for(int i=2;i<u;i++){
+        if(n%i==0)
+            return false;
+    }
+    return true;
+}
+```
+
+3. 在法2的基础上继续提高
+
+如果n除以大于√n的数，必得到小于√n的商，而小于√n的整数已经在2到√n的整数试过了，因为就没有必要再试(√n, n）$范围内的数了。代码如下：
+
+```
+
+```
+![]()
+
