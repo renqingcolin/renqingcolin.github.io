@@ -8,7 +8,7 @@ keywords: 计算机视觉 人脸检测
 
 # 目前人脸检测算法主要分为4大类：
 
->cascade based methods(基于)
+>cascade based methods
 ><br>part based methods
 ><br>channel feature based methods
 ><br>neural network based methods
