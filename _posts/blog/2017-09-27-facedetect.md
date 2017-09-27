@@ -14,7 +14,8 @@ keywords: 计算机视觉 人脸检测
 ><br>neural network based methods
 
 ## cascade based methods
-这个方法源自在2001年，Viola和Jones发表了经典的《Rapid Object Detection using a Boosted Cascade of Simple Features》，使用积分图方法快速计算harr_like特征，使用级联结构Adaboost分类器
+这个方法源自在2001年，Viola和Jones发表了经典的《Rapid Object Detection using a Boosted Cascade of Simple Features》，使用积分图方法快速计算harr_like特征，使用级联结构Adaboost分类器。
+
 Opencv的人脸检测模块就是基于这个方法的。
 
 ## part based methods
