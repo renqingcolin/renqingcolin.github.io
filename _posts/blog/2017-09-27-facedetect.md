@@ -23,13 +23,9 @@ Opencv的人脸检测模块就是基于这个方法的。
 ## channel feature based methods
 这一块还没看，相关的论文有：
 
-1. 《P. Dollar, Z. Tu, P. Perona, and S. Belongie. Integral channel
+1. 《P. Dollar, Z. Tu, P. Perona, and S. Belongie. Integral channel features. In BMVC, 2009》
 
-features. In BMVC, 2009》
-
-2. 《B. Yang, J. Yan, Z. Lei, and S. Z. Li. Aggregate channel
-
-features for multi-view face detection. CoRR, 2014》 
+2. 《B. Yang, J. Yan, Z. Lei, and S. Z. Li. Aggregate channel features for multi-view face detection. CoRR, 2014》 
 
 ## neural network based methods
 
