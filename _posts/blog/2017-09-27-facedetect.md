@@ -42,3 +42,9 @@ Opencv的人脸检测模块就是基于这个方法的。
 1. hog 《Histograms of Oriented Gradients for Human Detection》
 2. tiny face 《Finding Tiny Faces》《WIDER FACE: A Face Detection Benchmark》
 
+## 一些基本概念
+
+### 检测框生成方法
+
+经典的检测方法生成检测框都非常耗时，如OpenCV adaboost使用滑动窗口+图像金字塔生成检测框；或如RCNN使用SS(Selective Search)方法生成检测框。而Faster RCNN则抛弃了传统的滑动窗口和SS方法，直接使用RPN生成检测框，这也是Faster RCNN的巨大优势，能极大提升检测框的生成速度。
+
