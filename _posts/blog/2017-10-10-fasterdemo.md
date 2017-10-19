@@ -120,7 +120,7 @@ cp Makefile.config.example Makefile.config
 ##配置完后..
 make -j8 && make pycaffe
 ```
-###遇到的问题
+### 遇到的问题
 ```
  File "/usr/local/lib/python2.7/dist-packages/matplotlib/__init__.py", line 123, in <module>
     from . import cbook
