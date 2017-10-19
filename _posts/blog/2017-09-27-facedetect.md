@@ -41,6 +41,9 @@ Opencv的人脸检测模块就是基于这个方法的。
 
 1. hog 《Histograms of Oriented Gradients for Human Detection》
 2. tiny face 《Finding Tiny Faces》《WIDER FACE: A Face Detection Benchmark》
+3. R-FCN ![Fully Convolutional Networks forSemantic Segmentation]()
+4. YOLO
+5. SSD
 
 ## 一些基本概念
 

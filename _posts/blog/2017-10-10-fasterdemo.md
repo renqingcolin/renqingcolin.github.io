@@ -99,14 +99,55 @@ snapshot_prefix: "vgg16_fast_rcnn" #保存结果路径
 ### 数据格式
 Caffe数据格式有lmdb和leveldb两种，转换过程可以见caffe的mnist例子，主要是在examples/mnist/convert_mnist_data.cpp
 
+### Blobs
+Caffe使用blobs结构来处理网络中时的数据和导数信息：blob是Caffe的标准数组结构，它提供了一个统一的内存接口。
 
-
+## 安装
+从github上clone项目文件，注意：一定要在clone时加入--recursive参数，不然会很麻烦，也不要直接下载
+```ls 
+# Make sure to clone with --recursive
+git clone --recursive https://github.com/rbgirshick/py-faster-rcnn.git
+```
+Cython模块的编译
+```
+cd py-faster-rcnn/lib
+make
+```
+配置Makefile.config文件
+```
+cd py-faster-rcnn/caffe-fast-rcnn
+cp Makefile.config.example Makefile.config
+##配置完后..
+make -j8 && make pycaffe
+```
+###遇到的问题
+```
+ File "/usr/local/lib/python2.7/dist-packages/matplotlib/__init__.py", line 123, in <module>
+    from . import cbook
+ImportError: cannot import name cbook
+```
+#### 解决方法
+1. Try to update matplotlib
+```
+python -m pip install -U matplotlib
+```
+2. Try to reinstall matplotlib
+```
+python -m pip uninstall matplotlib
+python -m pip install -U matplotlib
+```
+3. What does the following snippet prints to the console?
+```
+python -c "import matplotlib"
+```
 ## demo.py
 ```
     #调用py-faster-rcnn/lib/fast_rcnn/test.py中的im_detect
     ##im的shape为(375,500,3)
     scores, boxes = im_detect(net, im) 
 ```
+
+
 
 ## test.py
 ```
