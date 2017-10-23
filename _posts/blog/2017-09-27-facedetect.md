@@ -41,7 +41,7 @@ Opencv的人脸检测模块就是基于这个方法的。
 
 1. hog 《Histograms of Oriented Gradients for Human Detection》
 2. tiny face 《Finding Tiny Faces》《WIDER FACE: A Face Detection Benchmark》
-3. R-FCN ![Fully Convolutional Networks forSemantic Segmentation]()
+3. R-FCN ![Fully Convolutional Networks for Semantic Segmentation]()
 4. YOLO
 5. SSD
 
@@ -51,3 +51,14 @@ Opencv的人脸检测模块就是基于这个方法的。
 
 经典的检测方法生成检测框都非常耗时，如OpenCV adaboost使用滑动窗口+图像金字塔生成检测框；或如RCNN使用SS(Selective Search)方法生成检测框。而Faster RCNN则抛弃了传统的滑动窗口和SS方法，直接使用RPN生成检测框，这也是Faster RCNN的巨大优势，能极大提升检测框的生成速度。
 
+## object detection
+
+目前object detection的工作可以粗略的分为两类：  
+1. 使用region proposal的，目前是主流，比如RCNN、SPP-Net、Fast-RCNN、Faster-RCNN以及MSRA最近的工作R-FCN。  
+2. 不使用region proposal的，YOLO，SSD。
+
+### 开源代码
+1. Faster rcnn  
+2. Openface  
+3. [TensorBox](https://github.com/Russell91/TensorBox)
+4. [Noscope](https://github.com/stanford-futuredata/noscope)
