@@ -44,6 +44,7 @@ Opencv的人脸检测模块就是基于这个方法的。
 3. R-FCN ![Fully Convolutional Networks for Semantic Segmentation]()
 4. YOLO
 5. SSD
+6. mask rcnn
 
 ## 一些基本概念
 

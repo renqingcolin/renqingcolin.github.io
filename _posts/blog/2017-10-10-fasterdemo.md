@@ -140,6 +140,7 @@ python -m pip install -U matplotlib
 ```
 python -c "import matplotlib"
 ```
+
 ## demo.py
 ```
     #调用py-faster-rcnn/lib/fast_rcnn/test.py中的im_detect
