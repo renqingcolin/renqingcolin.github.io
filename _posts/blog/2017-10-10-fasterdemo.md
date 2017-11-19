@@ -102,6 +102,34 @@ Caffe数据格式有lmdb和leveldb两种，转换过程可以见caffe的mnist例
 ### Blobs
 Caffe使用blobs结构来处理网络中时的数据和导数信息：blob是Caffe的标准数组结构，它提供了一个统一的内存接口。
 
+## 依赖安装
+### Caffe 安装
+1.
+```
+git clone https://anonscm.debian.org/git/debian-science/packages/caffe-contrib.git
+```
+2. 安装python依赖
+```
+cd caffe/python
+for req in $(cat requirements.txt); do pip install $req; done
+```
+3. 编译
+
+4. 问题  
+问题一
+```
+./include/caffe/util/hdf5.hpp:6:18: fatal error: hdf5.h: No such file or directory
+解决办法：在Makefile.config找到以下行并添加hdf5部分
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial 
+LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial
+```
+问题二  
+```
+.build_release/tools/caffe: error while loading shared libraries: libcudart.so.9.0:
+解决方法：
+Run 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64' before running 'make all/test/runtest'
+```
+
 ## 安装
 从github上clone项目文件，注意：一定要在clone时加入--recursive参数，不然会很麻烦，也不要直接下载
 ```ls 
@@ -121,24 +149,35 @@ cp Makefile.config.example Makefile.config
 make -j8 && make pycaffe
 ```
 ### 遇到的问题
+#### 问题一
 ```
  File "/usr/local/lib/python2.7/dist-packages/matplotlib/__init__.py", line 123, in <module>
     from . import cbook
 ImportError: cannot import name cbook
 ```
-#### 解决方法
+解决方法
 1. Try to update matplotlib
 ```
+//我原来的版本是2.1.0，后来改为2.0.2就好了
 python -m pip install -U matplotlib
 ```
 2. Try to reinstall matplotlib
 ```
 python -m pip uninstall matplotlib
-python -m pip install -U matplotlib
+python -m pip install -U matplotlib==2.0.2
 ```
 3. What does the following snippet prints to the console?
 ```
 python -c "import matplotlib"
+```
+
+#### 问题二
+```
+ImportError: No module named easydict
+```
+解决方法
+```
+sudo pip install easydict 
 ```
 
 ## demo.py
