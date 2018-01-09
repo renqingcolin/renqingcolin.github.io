@@ -13,7 +13,8 @@ keywords: Markdown
 
 #### [Re-id Resources](https://wangzwhu.github.io/home/re_id_resources.html)
 
-# 进阶论文及代码  
+# 进阶论文及代码 
+ 
 |论文| 代码|简述|时间|
 |---|---|---|--|
 |[An Improved Deep Learning Architecture for Person Re-Identification](http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Ahmed_An_Improved_Deep_2015_CVPR_paper.pdf)|[有](https://github.com/Ning-Ding/Implementation-CVPR2015-CNN-for-ReID)|两张图片相识度|CVPR 2015|
@@ -32,6 +33,7 @@ keywords: Markdown
 |[Re-ranking Person Re-identification with k-reciprocal Encoding](https://arxiv.org/abs/1701.08398)|[有](https://github.com/zhunzhong07/person-re-ranking)|无|CVPR 2017|
 
 # 实战项目  
+
 |Project name| code |
 |---|---|
 |[Open-ReID](https://cysu.github.io/open-reid/)|[Link](https://github.com/Cysu/open-reid)|
@@ -48,13 +50,15 @@ keywords: Markdown
 |DukeMTMC-reID|[http://vision.cs.duke.edu/DukeMTMC/](http://vision.cs.duke.edu/DukeMTMC/) [https://github.com/layumi/DukeMTMC-reID_evaluation](https://github.com/layumi/DukeMTMC-reID_evaluation)|
 |CUHK01, 02, 03|[http://www.ee.cuhk.edu.hk/~rzhao/](http://www.ee.cuhk.edu.hk/~rzhao/)|
 
-#### Attribute相关数据集  
+#### Attribute相关数据集 
+
 |Name|link|
 |---|---|
 |RAP|[https://link.zhihu.com/?target=http%3A//rap.idealtest.org/](https://link.zhihu.com/?target=http%3A//rap.idealtest.org/)|
 |Attribute for Market-1501and DukeMTMC_reID|[https://link.zhihu.com/?target=https%3A//vana77.github.io](https://link.zhihu.com/?target=https%3A//vana77.github.io)|
 
-#### 视频相关数据集  
+#### 视频相关数据集 
+
 |Name|link|
 |---|---|
 |Mars|[http://liangzheng.org/Project/project_mars.html](http://liangzheng.org/Project/project_mars.html)|
