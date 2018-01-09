@@ -35,4 +35,5 @@ val.txt和_trainval.txt。
 ## 准备自己的数据集
 
 
-## 
+## 修改配置文件
+在models/pascal_voc/中对于三种网络

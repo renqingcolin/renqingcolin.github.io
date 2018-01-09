@@ -114,7 +114,12 @@ cd caffe/python
 for req in $(cat requirements.txt); do pip install $req; done
 ```
 3. 编译
-
+```
+make all -j32
+make test
+make runtest
+make pycaffe -j32
+```
 4. 问题  
 问题一
 ```
@@ -129,8 +134,18 @@ LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu/
 解决方法：
 Run 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/lib64' before running 'make all/test/runtest'
 ```
-
-## 安装
+问题三：
+```
+LD -o .build_release/lib/libcaffe.so.1.0.0
+/usr/bin/ld: cannot find -lcblas
+/usr/bin/ld: cannot find -latlas
+collect2: error: ld returned 1 exit status
+解决方法：
+cd /usr/lib64/atlas/
+sudo ln -sv libsatlas.so.3.10 libcblas.so 
+sudo ln -sv libsatlas.so.3.10 libatlas.so
+```
+## Faster Rcnn安装
 从github上clone项目文件，注意：一定要在clone时加入--recursive参数，不然会很麻烦，也不要直接下载
 ```ls 
 # Make sure to clone with --recursive
@@ -178,6 +193,124 @@ ImportError: No module named easydict
 解决方法
 ```
 sudo pip install easydict 
+```
+
+### 参数的理解
+```
+# 数据路径
+ 'DATA_DIR': '/home/chengrenqing/py-faster-rcnn/data',
+#缩放因子(从原图到feature map的坐标映射，可能会造成在原图上不同的box到了feature map坐标系上变得相同了 1/16)
+ 'DEDUP_BOXES': 0.0625,
+# A small number that's used many times
+ 'EPS': 1e-14,
+# Place outputs under an experiments directory
+ 'EXP_DIR': 'faster_rcnn_end2end',
+ 'GPU_ID': 1,
+ 'MATLAB': 'matlab',
+# 模型路径
+ 'MODELS_DIR': '/home/chengrenqing/py-faster-rcnn/models/pascal_voc',
+#所有network所用的像素均值设为相同
+ 'PIXEL_MEANS': array([[[ 102.9801,  115.9465,  122.7717]]]),
+# For reproducibility
+ 'RNG_SEED': 3,
+# 项目根路径
+ 'ROOT_DIR': '/home/chengrenqing/py-faster-rcnn',
+----------train------------
+ 'TRAIN': {
+            'PROPOSAL_METHOD': 'gt',
+          #最短边Scale成600(can list multiple scales)
+           'SCALES': [600],
+          #最长边最大为1000
+           'MAX_SIZE': 1000,
+
+          #一个minibatch包含两张图片
+           'IMS_PER_BATCH': 1,
+          #Minibatch大小，即ROI的数量
+           'BATCH_SIZE': 128,
+
+          #minibatch中前景样本所占的比例
+           'FG_FRACTION': 0.25,
+          #与前景的overlap大于等于0.5认为该ROI为前景样本
+           'FG_THRESH': 0.5,
+          #与前景的overlap在0.0-0.5认为该ROI为背景样本
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+
+          # 训练bb回归器
+           'BBOX_REG': True,
+          #BBOX阈值，只有ROI与gt的重叠度大于阈值，这样的ROI才能用作bb回归的训练样本
+           'BBOX_THRESH': 0.5,
+          #归一化目标BBOX_NORMALIZE_TARGETS，减去经验均值，除以标准差
+           'BBOX_NORMALIZE_TARGETS': True,
+          #在BBOX_NORMALIZE_TARGETS为True时，归一化targets,使用经验均值和方差
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+          #Deprecated (inside weights) 弃用
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+
+          #水平翻转图像，增加数据量
+           'USE_FLIPPED': True, 
+          #minibatch的两个图片应该有相似的宽高比，以避免冗余的zero-padding计算
+            'ASPECT_GROUPING': True,
+          #为产生的snapshot文件名称添加一个可选的infix.solver.prototxt指定了snapshot名称的前缀
+           'SNAPSHOT_INFIX': '',
+          #每迭代1000次产生一次snapshot
+           'SNAPSHOT_ITERS': 10000,
+          #在roi_data_layer.layer使用预取线程，作者认为不太有效，因此设为False
+           'USE_PREFETCH': False,   
+          -----------------rpn---------------
+          #使用RPN检测目标
+           'HAS_RPN': True,
+          #batch size大小
+           'RPN_BATCHSIZE': 256,
+
+          #RPN的正样本阈值
+           'RPN_POSITIVE_OVERLAP': 0.7,
+          #RPN的负样本阈值
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+          #如果一个anchor同时满足正负样本条件，设为负样本（应该用不到）
+           'RPN_CLOBBER_POSITIVES': False,
+          #前景样本的比例
+           'RPN_FG_FRACTION': 0.5,
+          #Deprecated (outside weights)弃用
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+          # proposal的高和宽都应该大于RPN_MIN_SIZE，否则，映射到conv5上不足一个像素点
+           'RPN_MIN_SIZE': 16,
+          
+          #非极大值抑制的阈值
+           'RPN_NMS_THRESH': 0.7,
+          #在对RPN proposal使用NMS后，要保留的top scores的box数量
+           'RPN_POST_NMS_TOP_N': 2000,
+          #在对RPN proposal使用NMS前，要保留的top scores的box数量
+           'RPN_PRE_NMS_TOP_N': 12000,
+          #给定正RPN样本的权重 这里正负样本使用相同权重
+           'RPN_POSITIVE_WEIGHT': -1.0
+           },
+  #使用GPU实施非极大值抑制
+ 'USE_GPU_NMS': True}
+----------test--------------
+ 'TEST': {
+          'SCALES': [600],
+          'MAX_SIZE': 1000,
+        #使用RPN生成proposal
+          'HAS_RPN': True,
+        #测试时非极大值抑制的阈值
+          'NMS': 0.3,
+        # 分类不再用SVM，设置为False
+          'SVM': False,
+        # 使用bb回归
+          'BBOX_REG': True,
+        # 使用selective_search生成proposal
+          'PROPOSAL_METHOD': 'selective_search',
+      -------rpn--------
+          'RPN_MIN_SIZE': 16,
+        #  RPN proposal的NMS阈值
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000
+        
+        },
 ```
 
 ## demo.py
