@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mac 上编辑 Markdown
+title: 人物重识别资源
 categories: Blog
 description: sublime MarkdownEditing OmniMarkupPreviewer
 keywords: Markdown
